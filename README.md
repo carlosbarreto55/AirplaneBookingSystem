@@ -1,13 +1,10 @@
 # SistemaPassagensAereas
 
-Trabalho pratico de Sistemas Operacionais sobre programacao concorrente e paralela.
+Trabalho pratico sobre programacao concorrente e paralela.
 O projeto implementa uma simulacao de sistema de venda de passagens aereas em duas versoes:
 
 - `SistemaPassagensSequencial`: atendimento tradicional, com um unico fluxo de execucao.
 - `SistemaPassagensThreads`: atendimento paralelo, com uma fila compartilhada e varias threads atendentes.
-
-Nao ha frameworks, bibliotecas externas, Maven ou Gradle. O projeto usa apenas Java puro e a classe
-`Thread`, alem de `synchronized`, `wait` e `notifyAll` para coordenacao.
 
 ## Compilar
 
@@ -15,6 +12,12 @@ Execute dentro da pasta do projeto:
 
 ```bash
 javac -d out src/sistema/*.java
+```
+
+Para compilar tambem a interface grafica Swing:
+
+```bash
+javac -d out src/sistema/*.java UI/sistema/*.java
 ```
 
 ## Executar a versao sequencial
@@ -52,6 +55,19 @@ Exemplo:
 ```bash
 java -cp out sistema.SistemaPassagensThreads 4 50 200 700
 ```
+
+## Executar a interface grafica Swing
+
+A pasta `UI/` contem uma interface grafica feita com Java Swing. Ela permite escolher os mesmos
+parametros usados no terminal, como modo sequencial ou com threads, quantidade de threads, assentos
+por voo, tempo minimo e maximo de atendimento, compra manual, lote e lote assincrono.
+
+```bash
+java -cp out sistema.SistemaPassagensSwing
+```
+
+A interface valida entradas invalidas, como passageiro vazio, tempo maximo menor que o minimo,
+assento fora do intervalo e tentativa de lote assincrono no modo sequencial.
 
 ## Comandos interativos
 
